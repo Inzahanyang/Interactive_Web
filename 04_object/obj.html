@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Object</title>
+    <style>
+      .card {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 150px;
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: 10px;
+        font-size: 3em;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 생성자 (constructor)
+      // function Person(myName, age) {
+      //   this.myName = myName;
+      //   this.age = age;
+      // }
+
+      // Person.prototype.introduce = function() {
+      //   console.log(`내이름은 ${this.myName} 이고 나이는 ${this.age} 입니다.`);
+      // };
+
+      // const person1 = new Person("양우", 38);
+
+      // person1.introduce();
+    </script>
+    <script>
+      // const person = {};
+      // // property
+      // person.name = "양우";
+      // person.age = "38";
+      // person.book = {
+      //   first: "프레임",
+      //   second: "시간을 거슬러",
+      //   기타: {
+      //     만화책: "드레곤볼",
+      //     소설책: "고래"
+      //   }
+      // };
+      // // method
+      // person.introduce = function() {
+      //   console.log("저는 38살 김양우입니다.");
+      // };
+      // person.introduce();
+      // // console.log(person.introduce);
+    </script>
+    <script>
+      // const person = {
+      //   myName: "양우",
+      //   age: 38,
+      //   introduce: function() {
+      //     console.log(`안녕하세요? 저는 ${this.myName} 이고 나이는 ${this.age} 입니다.`);
+      //   }
+      // };
+
+      // const person2 = {
+      //   myName: "지니",
+      //   age: 37,
+      //   introduce: function() {}
+      // };
+
+      // person.introduce();
+      // person2.introduce();
+
+      // function person(myName, age) {
+      //   console.log(`안녕하세요? 저는 ${myName} 이고 나이는 ${age} 입니다.`);
+      // }
+
+      // person("양우", 38);
+    </script>
+
+    <script>
+      function Card(num, color) {
+        this.num = num;
+        this.color = color;
+        this.init();
+      }
+
+      Card.prototype = {
+        constructor: Card,
+        init: function() {
+          const mainElem = document.createElement("div");
+          mainElem.style.color = this.color;
+          mainElem.innerHTML = this.num;
+          mainElem.classList.add("card");
+          document.body.append(mainElem);
+        }
+      };
+      const card1 = new Card(1, "green");
+      const card2 = new Card(1, "blue");
+      const card3 = new Card(1, "yello");
+    </script>
+  </body>
+</html>

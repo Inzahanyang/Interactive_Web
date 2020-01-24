@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/02_02.css" />
+  </head>
+  <body>
+    <!-- <div class="stage">
+      <div class="ilbuni"></div>
+      <div class="ilbuni"></div>
+      <div class="ilbuni"></div>
+    </div> -->
+    <div class="menu">
+      <!-- <button class="menu-btn" data-value="1">
+        <img class="icon" src="img/ilbuni_1.png" alt="" /><span class="btn-label">일분이 1</span>
+      </button>
+      <button class="menu-btn" data-value="2">
+        <img class="icon" src="img/ilbuni_2.png" alt="" /><span class="btn-label">일분이 2</span>
+      </button>
+      <button class="menu-btn" data-value="3">
+        <img class="icon" src="img/ilbuni_3.png" alt="" /><span class="btn-label">일분이 3</span>
+      </button> -->
+    </div>
+    <script>
+      const menu = document.querySelector(".menu");
+      function clickHandler(e) {
+        let elem = e.target;
+        while (!elem.classList.contains("menu-btn")) {
+          elem = elem.parentNode;
+          if (elem.nodeName === "BODY") {
+            elem = null;
+            return;
+          }
+        }
+        console.log(elem.dataset.value);
+      }
+      menu.addEventListener("click", clickHandler);
+
+      window.addEventListener("click", () => {
+        const htmlstr = `
+            <button class="menu-btn" data-value="1">
+                <img class="icon" src="img/ilbuni_1.png" alt="" /><span class="btn-label">일분이 1</span>
+            </button>
+            <button class="menu-btn" data-value="2">
+                <img class="icon" src="img/ilbuni_2.png" alt="" /><span class="btn-label">일분이 2</span>
+            </button>
+            <button class="menu-btn" data-value="3">
+                <img class="icon" src="img/ilbuni_3.png" alt="" /><span class="btn-label">일분이 3</span>
+            </button>
+          `;
+        menu.innerHTML = htmlstr;
+      });
+    </script>
+  </body>
+</html>

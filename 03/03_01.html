@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>3doors</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/03_01.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+      <div class="door">
+        <div class="door-back">
+          <div class="ilbuni"></div>
+        </div>
+        <div class="door-body"></div>
+      </div>
+    </div>
+    <script>
+      const opendoor = () => {
+        const stage = document.querySelector(".stage");
+        let current;
+
+        function activate(elem) {
+          elem.classList.add("door-opened");
+          current = elem;
+        }
+        function inactivate(elem) {
+          current.classList.remove("door-opened");
+        }
+
+        function doorHandler(e) {
+          if (current) {
+            inactivate(current);
+          }
+
+          if (e.target.classList.contains("door-body")) {
+            activate(e.target.parentNode);
+          }
+        }
+        stage.addEventListener("click", doorHandler);
+        activate(document.querySelectorAll(".door")[1]);
+      };
+
+      function openClose() {
+        document.querySelector(".door").classList.add("door-opened");
+        setTimeout(() => {
+          document.querySelector(".door").classList.remove("door-opened");
+        }, 1000);
+      }
+      openClose();
+      // setInterval(openClose, 2000);
+    </script>
+  </body>
+</html>

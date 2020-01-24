@@ -1,0 +1,68 @@
+/* .stage {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 75vw;
+  background-color: #fff000;
+}
+@keyframes moving {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(90vw);
+  }
+}
+.ilbuni {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+  animation: moving infinite alternate;
+}
+
+.ilbuni:nth-child(1) {
+  left: 5%;
+  bottom: 5%;
+  background-image: url("../img//ilbuni_0.png");
+  animation-duration: 0.1s;
+}
+.ilbuni:nth-child(2) {
+  left: 10%;
+  bottom: 3%;
+  background-image: url("../img//ilbuni_1.png");
+  animation-duration: 0.5s;
+}
+.ilbuni:nth-child(3) {
+  left: 7%;
+  bottom: 10%;
+  background-image: url("../img//ilbuni_2.png");
+  animation-duration: 0.3s;
+} */
+
+.menu {
+  height: 150px;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: teal;
+}
+.menu-btn {
+  border: 10px solid white;
+  border-radius: 20px;
+  width: 200px;
+  height: 110px;
+  background-color: yellow;
+  margin: 20px;
+}
+img {
+  width: 30%;
+  height: 20%;
+}
+span {
+  margin-left: 5px;
+  font-size: 20px;
+}
