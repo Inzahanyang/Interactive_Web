@@ -1,7 +1,7 @@
 (function() {
+  const stageElem = document.querySelector(".stage");
   const houseElem = document.querySelector(".house");
   const barElem = document.querySelector(".progress-bar");
-  const stageElem = document.querySelector(".stage");
   const mousePos = { x: 0, y: 0 };
 
   let maxScrollValue;
@@ -26,7 +26,12 @@
   });
 
   window.addEventListener("resize", resizeHandler);
-  resizeHandler();
 
-  new Character();
+  stageElem.addEventListener("click", function(e) {
+    new Character({
+      xPos: (e.clientX / window.innerWidth) * 100
+    });
+  });
+
+  resizeHandler();
 })();
