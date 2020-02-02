@@ -29,4 +29,17 @@ function Character(info) {
   `;
   document.querySelector(".stage").appendChild(this.mainElem);
   this.mainElem.style.left = info.xPos + "%";
+  this.init();
 }
+
+Character.prototype = {
+  constructor: Character,
+  init: function() {
+    const self = this;
+    console.log(this);
+
+    window.addEventListener("scroll", function() {
+      self.mainElem.classList.add("running");
+    });
+  }
+};
