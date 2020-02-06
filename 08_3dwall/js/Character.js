@@ -29,6 +29,7 @@ function Character(info) {
   `;
   document.querySelector(".stage").appendChild(this.mainElem);
   this.mainElem.style.left = info.xPos + "%";
+  this.scrollState = false;
   this.init();
 }
 
@@ -36,10 +37,15 @@ Character.prototype = {
   constructor: Character,
   init: function() {
     const self = this;
-    console.log(this);
-
     window.addEventListener("scroll", function() {
-      self.mainElem.classList.add("running");
+      clearTimeout(self.scrollState);
+      if (!self.scrollState) {
+        self.mainElem.classList.add("running");
+      }
+      self.scrollState = setTimeout(function() {
+        self.scrollState = false;
+        self.mainElem.classList.remove("running");
+      }, 500);
     });
   }
 };
