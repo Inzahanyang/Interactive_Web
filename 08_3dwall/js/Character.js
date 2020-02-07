@@ -30,6 +30,10 @@ function Character(info) {
   document.querySelector(".stage").appendChild(this.mainElem);
   this.mainElem.style.left = info.xPos + "%";
   this.scrollState = false;
+  this.lastScrollTop = 0;
+  this.xPos = info.xPos;
+  this.speed = 1;
+  this.direction;
   this.init();
 }
 
@@ -37,6 +41,7 @@ Character.prototype = {
   constructor: Character,
   init: function() {
     const self = this;
+
     window.addEventListener("scroll", function() {
       clearTimeout(self.scrollState);
       if (!self.scrollState) {
@@ -46,6 +51,41 @@ Character.prototype = {
         self.scrollState = false;
         self.mainElem.classList.remove("running");
       }, 500);
+
+      if (self.lastScrollTop > pageYOffset) {
+        self.mainElem.setAttribute("data-direction", "backward");
+      } else {
+        self.mainElem.setAttribute("data-direction", "forward");
+      }
+
+      self.lastScrollTop = pageYOffset;
+    });
+    window.addEventListener("keydown", function(e) {
+      if (e.keyCode === 37) {
+        self.direction = "left";
+        self.mainElem.setAttribute("data-direction", "left");
+        self.mainElem.classList.add("running");
+        self.run(self);
+      } else if (e.keyCode === 39) {
+        self.direction = "right";
+        self.mainElem.setAttribute("data-direction", "right");
+        self.mainElem.classList.add("running");
+        self.run(self);
+      }
+    });
+    window.addEventListener("keyup", function(e) {
+      self.mainElem.classList.remove("running");
+    });
+  },
+  run: function(self) {
+    if (self.direction === "left") {
+      self.xPos = self.xPos - self.speed;
+    } else if (self.direction === "right") {
+      self.xPos = self.xPos + self.speed;
+    }
+    self.mainElem.style.left = self.xPos + "%";
+    requestAnimationFrame(function() {
+      self.run(self);
     });
   }
 };
